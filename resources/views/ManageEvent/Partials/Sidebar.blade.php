@@ -17,6 +17,7 @@
                     <span class="text">@lang("basic.dashboard")</span>
                 </a>
             </li>
+            @if(Auth::user()->is_parent)
             <li class="{{ Request::is('*tickets*') ? 'active' : '' }}">
                 <a href="{{route('showEventTickets', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-ticket"></i></span>
@@ -47,6 +48,7 @@
                     <span class="text">@lang("basic.customize")</span>
                 </a>
             </li>
+            @endif
         </ul>
         <h5 class="heading">@lang("ManageEvent.event_tools")</h5>
         <ul id="nav_event" class="topmenu">
@@ -56,6 +58,7 @@
                     <span class="text">@lang("ManageEvent.check-in")</span>
                 </a>
             </li>
+            @if(Auth::user()->is_parent)
             <li class="{{ Request::is('*surveys*') ? 'active' : '' }}">
                 <a href="{{route('showEventSurveys', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-question"></i></span>
@@ -74,6 +77,7 @@
                     <span class="text">@lang("AccessCodes.title")</span>
                 </a>
             </li>
+            @endif
         </ul>
     </section>
 </aside>

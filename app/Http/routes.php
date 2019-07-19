@@ -248,16 +248,17 @@ Route::group(
                 'as'   => 'showOrganiserEvents',
                 'uses' => 'OrganiserEventsController@showEvents',
             ]);
-
-            Route::get('{organiser_id}/customize', [
-                'as'   => 'showOrganiserCustomize',
-                'uses' => 'OrganiserCustomizeController@showCustomize',
-            ]);
-            Route::post('{organiser_id}/customize', [
-                'as'   => 'postEditOrganiser',
-                'uses' => 'OrganiserCustomizeController@postEditOrganiser',
-            ]);
-
+            
+            Route::group(['middleware' => 'is_parent'], function () {
+                Route::get('{organiser_id}/customize', [
+                    'as'   => 'showOrganiserCustomize',
+                    'uses' => 'OrganiserCustomizeController@showCustomize',
+                ]);
+                Route::post('{organiser_id}/customize', [
+                    'as'   => 'postEditOrganiser',
+                    'uses' => 'OrganiserCustomizeController@postEditOrganiser',
+                ]);
+            });
             Route::get('create', [
                 'as'   => 'showCreateOrganiser',
                 'uses' => 'OrganiserController@showCreateOrganiser',
@@ -334,39 +335,40 @@ Route::group(
              * Tickets
              * -------
              */
-            Route::get('{event_id}/tickets/', [
-                'as'   => 'showEventTickets',
-                'uses' => 'EventTicketsController@showTickets',
-            ]);
-            Route::get('{event_id}/tickets/edit/{ticket_id}', [
-                'as'   => 'showEditTicket',
-                'uses' => 'EventTicketsController@showEditTicket',
-            ]);
-            Route::post('{event_id}/tickets/edit/{ticket_id}', [
-                'as'   => 'postEditTicket',
-                'uses' => 'EventTicketsController@postEditTicket',
-            ]);
-            Route::get('{event_id}/tickets/create', [
-                'as'   => 'showCreateTicket',
-                'uses' => 'EventTicketsController@showCreateTicket',
-            ]);
-            Route::post('{event_id}/tickets/create', [
-                'as'   => 'postCreateTicket',
-                'uses' => 'EventTicketsController@postCreateTicket',
-            ]);
-            Route::post('{event_id}/tickets/delete', [
-                'as'   => 'postDeleteTicket',
-                'uses' => 'EventTicketsController@postDeleteTicket',
-            ]);
-            Route::post('{event_id}/tickets/pause', [
-                'as'   => 'postPauseTicket',
-                'uses' => 'EventTicketsController@postPauseTicket',
-            ]);
-            Route::post('{event_id}/tickets/order', [
-                'as'   => 'postUpdateTicketsOrder',
-                'uses' => 'EventTicketsController@postUpdateTicketsOrder',
-            ]);
-
+            Route::group(['middleware' => 'is_parent'], function () {
+                Route::get('{event_id}/tickets/', [
+                    'as'   => 'showEventTickets',
+                    'uses' => 'EventTicketsController@showTickets',
+                ]);
+                Route::get('{event_id}/tickets/edit/{ticket_id}', [
+                    'as'   => 'showEditTicket',
+                    'uses' => 'EventTicketsController@showEditTicket',
+                ]);
+                Route::post('{event_id}/tickets/edit/{ticket_id}', [
+                    'as'   => 'postEditTicket',
+                    'uses' => 'EventTicketsController@postEditTicket',
+                ]);
+                Route::get('{event_id}/tickets/create', [
+                    'as'   => 'showCreateTicket',
+                    'uses' => 'EventTicketsController@showCreateTicket',
+                ]);
+                Route::post('{event_id}/tickets/create', [
+                    'as'   => 'postCreateTicket',
+                    'uses' => 'EventTicketsController@postCreateTicket',
+                ]);
+                Route::post('{event_id}/tickets/delete', [
+                    'as'   => 'postDeleteTicket',
+                    'uses' => 'EventTicketsController@postDeleteTicket',
+                ]);
+                Route::post('{event_id}/tickets/pause', [
+                    'as'   => 'postPauseTicket',
+                    'uses' => 'EventTicketsController@postPauseTicket',
+                ]);
+                Route::post('{event_id}/tickets/order', [
+                    'as'   => 'postUpdateTicketsOrder',
+                    'uses' => 'EventTicketsController@postUpdateTicketsOrder',
+                ]);
+            });
             /*
              * -------
              * Attendees
@@ -573,16 +575,19 @@ Route::group(
              * Event Widget page
              * -------
              */
+            Route::group(['middleware' => 'is_parent'], function () {
             Route::get('{event_id}/widgets', [
                 'as'   => 'showEventWidgets',
                 'uses' => 'EventWidgetsController@showEventWidgets',
             ]);
+            });
 
             /*
              * -------
              * Event Access Codes page
              * -------
              */
+            Route::group(['middleware' => 'is_parent'], function () {
             Route::get('{event_id}/access_codes', [
                 'as'   => 'showEventAccessCodes',
                 'uses' => 'EventAccessCodesController@show',
@@ -602,12 +607,13 @@ Route::group(
                 'as' => 'postDeleteEventAccessCode',
                 'uses' => 'EventAccessCodesController@postDelete',
             ]);
-
+            });
             /*
              * -------
              * Event Survey page
              * -------
              */
+            Route::group(['middleware' => 'is_parent'], function () {
             Route::get('{event_id}/surveys', [
                 'as'   => 'showEventSurveys',
                 'uses' => 'EventSurveyController@showEventSurveys',
@@ -657,7 +663,7 @@ Route::group(
                 'as'   => 'postEnableQuestion',
                 'uses' => 'EventSurveyController@postEnableQuestion',
             ]);
-
+            });
 
             /*
              * -------
