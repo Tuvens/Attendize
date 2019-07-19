@@ -26,7 +26,7 @@ class IsParent
     {
         $authUser = Auth::user();
 
-        if($authUser && !$authUser->is_parent){                    
+        if(!$authUser || (!$authUser->is_parent && $authUser->role != 1)){                    
             return Redirect::to('/');            
         }
         

@@ -78,7 +78,7 @@
                         <a data-href="{{route('showEditUser')}}" data-modal-id="EditUser"
                            class="loadModal editUserModal" href="javascript:void(0);"><span class="icon ico-user"></span>@lang("Top.my_profile")</a>
                     </li>
-                    @if(Auth::user()->is_parent)
+                    @if(Auth::user()->is_parent || Auth::user()->role == 1)
                     <li class="divider"></li>
                     <li><a data-href="{{route('showEditAccount')}}" data-modal-id="EditAccount" class="loadModal"
                            href="javascript:void(0);"><span class="icon ico-cog"></span>@lang("Top.account_settings")</a></li>

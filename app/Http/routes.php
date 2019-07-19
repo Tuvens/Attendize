@@ -201,6 +201,13 @@ Route::group(
                 'as'   => 'postEditUser',
                 'uses' => 'UserController@postEditUser',
             ]);
+            
+            Route::group(['middleware' => 'is_parent'], function () {
+                Route::post('/role', [
+                    'as'   => 'postRoleUser',
+                    'uses' => 'UserController@postRoleUser',
+                ]);
+            });
 
         });
 

@@ -6,6 +6,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 use Validator;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -77,5 +78,21 @@ class UserController extends Controller
             'status'  => 'success',
             'message' => trans("Controllers.successfully_saved_details"),
         ]);
+    }
+    
+    public function postRoleUser(Request $request)
+    {
+        $authUser = Auth::user();
+        $role = $request->input('role');
+        $userId = $request->input('user_id');
+        
+        $user = User::find($userId);
+        
+        //can change role
+        if($authUser->is_parent && $authUser->account_id == $user->account_id){
+          $user->role = $role;
+          return response()->json(['success' => $user->save()]);
+        }
+                
     }
 }

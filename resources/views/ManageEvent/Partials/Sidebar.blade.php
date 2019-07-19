@@ -17,7 +17,7 @@
                     <span class="text">@lang("basic.dashboard")</span>
                 </a>
             </li>
-            @if(Auth::user()->is_parent)
+            @if(Auth::user()->is_parent || Auth::user()->role == 1)
             <li class="{{ Request::is('*tickets*') ? 'active' : '' }}">
                 <a href="{{route('showEventTickets', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-ticket"></i></span>
@@ -58,7 +58,7 @@
                     <span class="text">@lang("ManageEvent.check-in")</span>
                 </a>
             </li>
-            @if(Auth::user()->is_parent)
+            @if(Auth::user()->is_parent || Auth::user()->role == 1)
             <li class="{{ Request::is('*surveys*') ? 'active' : '' }}">
                 <a href="{{route('showEventSurveys', array('event_id' => $event->id))}}">
                     <span class="figure"><i class="ico-question"></i></span>

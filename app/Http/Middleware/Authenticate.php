@@ -17,10 +17,14 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if(Auth::user() && Auth::user()->role == 0 && !Auth::user()->is_parent){            
+            Auth::logout();
+        }
+        
         if (Auth::guard($guard)->guest()) {
             if ($request->is('api/*') || $request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
-            } else {
+            } else {                
                 return redirect()->guest('login');
             }
         }

@@ -15,7 +15,7 @@
                     <span class="text">@lang("Organiser.event")</span>
                 </a>
             </li>
-            @if(Auth::user()->is_parent)
+            @if(Auth::user()->is_parent || Auth::user()->role == 1)
             <li class="{{ Request::is('*customize*') ? 'active' : '' }}">
                 <a href="{{route('showOrganiserCustomize', array('organiser_id' => $organiser->id))}}">
                     <span class="figure"><i class="ico-cog"></i></span>
