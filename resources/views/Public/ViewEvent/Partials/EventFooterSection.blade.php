@@ -3,8 +3,6 @@
         <div class="row">
             <div class="col-md-12">
 
-                {{--Attendize is provided free of charge on the condition the below hyperlink is left in place.--}}
-                {{--See https://www.attendize.com/license.html for more information.--}}
                 @include('Shared.Partials.PoweredBy')
 
                 @if(Utils::userOwns($event))
