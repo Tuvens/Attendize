@@ -164,7 +164,7 @@ var checkinApp = new Vue({
 
             this.canvasContext.clearRect(0, 0, 600, 300);
 
-            try {
+            //try {
                 this.canvasContext.drawImage(this.videoElement, 0, 0);
                 //try {
                     qrcode.decode();
@@ -173,11 +173,11 @@ var checkinApp = new Vue({
                     console.log(e);
                     //this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
                 //}
-            }
-            catch (e) {
-                console.log(e);
-                this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
-            }
+            //}
+            //catch (e) {
+            //    console.log(e);
+            //    this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
+            //}
         },
         closeScanner: function () {
             clearTimeout(this.QrTimeout);
