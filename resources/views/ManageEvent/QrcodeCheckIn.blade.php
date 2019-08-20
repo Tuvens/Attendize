@@ -10,6 +10,7 @@
   {!! HTML::script('vendor/jquery/jquery.js') !!}
 
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   @include('Shared/Layouts/ViewJavascript')
 
@@ -88,7 +89,7 @@
     </footer>
   </div>
 
-  <canvas id="qr-canvas" width="300" height="300"></canvas>
+  <canvas id="qr-canvas" width="600" height="300"></canvas>
   <script type="text/javascript">load();</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
