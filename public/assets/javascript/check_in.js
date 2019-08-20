@@ -168,7 +168,7 @@ var checkinApp = new Vue({
                 this.canvasContext.drawImage(this.videoElement, 0, 0);
                 //try {
                     qrcode.decode();
-                }
+                //}
                 //catch (e) {
                     console.log(e);
                     //this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
