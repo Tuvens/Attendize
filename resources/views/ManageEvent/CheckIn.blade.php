@@ -151,7 +151,7 @@
                         <div id="scanning-ellipsis">@lang("Attendee.scanning")<span>.</span><span>.</span><span>.</span></div>
                     </span>
         </div>
-        <canvas id="QrCanvas" width="600" height="300"></canvas>
+        <canvas id="QrCanvas" width="800" height="600"></canvas>
     </div>
 </div>
 {{-- /END QR Modal--}}
