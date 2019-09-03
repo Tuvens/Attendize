@@ -129,11 +129,10 @@ var checkinApp = new Vue({
 
             navigator.mediaDevices.getUserMedia({
                 video: {
-                    facingMode: 'environment'
+                    facingMode: "environment" //TODO: Add switch to toggle "user" or "enviroment"
                 },
                 audio: false
-            }, function (stream) {
-
+            }).then(function(stream) {
                 that.stream = stream;
 
                 if (that.videoElement.mozSrcObject !== undefined) { // works on firefox now
@@ -141,8 +140,8 @@ var checkinApp = new Vue({
                 } else if(window.URL) { // and chrome, but must use https
                     that.videoElement.srcObject = stream;
                 };
-
-            }, function () { /* error*/
+            }).catch(function(err) {
+                console.log(err.name + ": " + err.message);
                 alert(lang("checkin_init_error"));
             });
 
@@ -164,20 +163,20 @@ var checkinApp = new Vue({
 
             this.canvasContext.clearRect(0, 0, 600, 300);
 
-            //try {
+            try {
                 this.canvasContext.drawImage(this.videoElement, 0, 0);
-                //try {
+                try {
                     qrcode.decode();
-                //}
-                //catch (e) {
+                }
+                catch (e) {
                     console.log(e);
-                    //this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
-                //}
-            //}
-            //catch (e) {
-            //    console.log(e);
-            //    this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
-            //}
+                    this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
+                }
+            }
+            catch (e) {
+                console.log(e);
+                this.QrTimeout = setTimeout(this.captureQrToCanvas, 500);
+            }
         },
         closeScanner: function () {
             clearTimeout(this.QrTimeout);
