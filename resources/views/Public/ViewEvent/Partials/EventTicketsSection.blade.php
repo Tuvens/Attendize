@@ -14,7 +14,7 @@
         @if($tickets->count() > 0)
 
             {!! Form::open(['url' => route('postValidateTickets', ['event_id' => $event->id]), 'class' => 'ajax']) !!}
-            <div class="row">
+            <div class="row" style="margin-left: -25px;">
                 <div class="col-md-12">
                     <div class="content">
                         <div class="tickets_table_wrap">
