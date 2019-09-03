@@ -1,4 +1,4 @@
-<section id="tickets" class="container">
+<section id="tickets" class="container" style="margin-left: -25px !important;">
     <div class="row">
         <h1 class='section_head'>
             @lang("Public_ViewEvent.tickets")
@@ -14,7 +14,7 @@
         @if($tickets->count() > 0)
 
             {!! Form::open(['url' => route('postValidateTickets', ['event_id' => $event->id]), 'class' => 'ajax']) !!}
-            <div class="row" style="margin-left: -25px !important;">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="content">
                         <div class="tickets_table_wrap">
