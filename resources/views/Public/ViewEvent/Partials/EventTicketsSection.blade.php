@@ -76,7 +76,7 @@
                                                     {!! Form::hidden('tickets[]', $ticket->id) !!}
                                                     <meta property="availability" content="http://schema.org/InStock">
                                                     <select name="ticket_{{$ticket->id}}" class="form-control"
-                                                            style="text-align: center; width: auto !important;">
+                                                            style="text-align: center;">
                                                         @if ($tickets->count() > 1)
                                                             <option value="0">0</option>
                                                         @endif
