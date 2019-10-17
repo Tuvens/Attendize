@@ -69,7 +69,7 @@
 
                 @if($event->post_order_display_message)
                 <div class="alert alert-dismissable alert-info">
-                    {{ htmlspecialchars(nl2br(e($event->post_order_display_message))) }}
+                    {{ htmlspecialchars(nl2br($event->post_order_display_message)) }}
                 </div>
                 @endif
 
