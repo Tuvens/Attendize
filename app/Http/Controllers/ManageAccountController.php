@@ -31,7 +31,7 @@ class ManageAccountController extends MyBaseController
             'account'                  => Account::find(Auth::user()->account_id),
             'timezones'                => Timezone::pluck('location', 'id'),
             'currencies'               => Currency::pluck('title', 'id'),
-            'payment_gateways'         => PaymentGateway::pluck('provider_name', 'id'),
+            'payment_gateways'         => PaymentGateway::where(['is_on_site' => 1])->pluck('provider_name', 'id'),
             'account_payment_gateways' => AccountPaymentGateway::scope()->get(),
             'version_info'             => $this->getVersionInfo(),
         ];
