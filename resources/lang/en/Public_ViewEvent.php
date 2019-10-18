@@ -14,6 +14,7 @@ return [
   'below_order_details_header' => '',
   'below_payment_information_header' => '',
   'below_tickets' => 'Choose the number of tickets and click "register". On the next screen you\'ll pay for them.',
+  'below_tickets_avoid_tax' => 'The above prices include credit card service fees. To avoid service fees select offline payment on the next page',
   'booking_fee' => 'Booking Fee',
   'booking_fees' => 'Booking Fees',
   'is_business' => 'Are you a tax registered business?',

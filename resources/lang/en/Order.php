@@ -20,6 +20,7 @@ return array (
   'edit' => 'Edit',
   'email' => 'Email',
   'enable_offline_payments' => 'Enable Offline Payments',
+  'enable_only_offline_payments' => 'Enable Only Offline Payments',
   'free' => 'FREE',
   'no_recent_orders' => 'Looks like there are no recent orders.',
   'offline_payment_instructions' => 'Enter instructions on how attendees can make payment offline.',

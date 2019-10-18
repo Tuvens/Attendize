@@ -187,7 +187,7 @@ class EventCheckoutController extends Controller
         } else {
             $activeAccountPaymentGateway = $event->account->getGateway($event->account->payment_gateway_id);
             //if no payment gateway configured and no offline pay, don't go to the next step and show user error
-            if (empty($activeAccountPaymentGateway) && !$event->enable_offline_payments) {
+            if (empty($activeAccountPaymentGateway) && !$event->enable_offline_payments && !$event->enable_only_offline_payments) {
                 return response()->json([
                     'status'  => 'error',
                     'message' => 'No payment gateway configured',
@@ -340,7 +340,7 @@ class EventCheckoutController extends Controller
 
         $orderRequiresPayment = $ticket_order['order_requires_payment'];
 
-        if ($orderRequiresPayment && $request->get('pay_offline') && $event->enable_offline_payments) {
+        if ($orderRequiresPayment && $request->get('pay_offline') && ($event->enable_offline_payments || $event->enable_ony_offline_payments)) {
             return $this->completeOrder($event_id);
         }
 

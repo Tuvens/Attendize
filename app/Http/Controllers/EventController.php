@@ -141,6 +141,7 @@ class EventController extends MyBaseController
             $event->post_order_display_message = $defaults->post_order_display_message;
             $event->offline_payment_instructions = $defaults->offline_payment_instructions;
             $event->enable_offline_payments = $defaults->enable_offline_payments;
+            $event->enable_only_offline_payments = $defaults->enable_only_offline_payments;
             $event->social_show_facebook = $defaults->social_show_facebook;
             $event->social_show_linkedin = $defaults->social_show_linkedin;
             $event->social_show_twitter = $defaults->social_show_twitter;

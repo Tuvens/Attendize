@@ -125,9 +125,9 @@
 
             });
 
-            $('#enable_offline_payments').change(function () {
+            /*$('#enable_offline_payments').change(function () {
                 $('.offline_payment_details').toggle(this.checked);
-            }).change();
+            }).change();*/
         });
 
 
@@ -503,7 +503,13 @@
                                 <label for="enable_offline_payments">@lang("Order.enable_offline_payments")</label>
                             </div>
                         </div>
-                        <div class="offline_payment_details" style="display: none;">
+                        <div class="form-group">
+                            <div class="custom-checkbox">
+                                <input {{ $event->enable_only_offline_payments ? 'checked="checked"' : '' }} data-toggle="toggle" id="enable_only_offline_payments" name="enable_only_offline_payments" type="checkbox" value="1">
+                                <label for="enable_only_offline_payments">@lang("Order.enable_only_offline_payments")</label>
+                            </div>
+                        </div>
+                        <div class="offline_payment_details" style="">
                             {!! Form::textarea('offline_payment_instructions', $event->offline_payment_instructions, ['class' => 'form-control editable']) !!}
                             <div class="help-block">
                                 @lang("Order.offline_payment_instructions")

@@ -222,7 +222,7 @@
 
                 <h3>@lang("Public_ViewEvent.payment_information")</h3>
                     @lang("Public_ViewEvent.below_payment_information_header")
-                @if($event->enable_offline_payments)
+                @if($event->enable_offline_payments || $event->enable_only_offline_payments)
                     <div class="offline_payment_toggle">
                         <div class="custom-checkbox">
                             @if($payment_gateway === false)
