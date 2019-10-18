@@ -111,7 +111,12 @@ class Order extends MyBaseModel
      */
     public function getOrganiserAmountAttribute()
     {
-        return $this->amount + $this->organiser_booking_fee + $this->taxamt;
+        // if only offline disable it
+        if ($this->event->enable_only_offline_payments) {
+            return $this->amount;
+        } else {
+            return $this->amount + $this->organiser_booking_fee + $this->taxamt;
+        }
     }
 
     /**
@@ -121,7 +126,12 @@ class Order extends MyBaseModel
      */
     public function getTotalAmountAttribute()
     {
-        return $this->amount + $this->organiser_booking_fee + $this->booking_fee;
+        // if only offline disable it
+        if ($this->event->enable_only_offline_payments) {
+            return $this->amount + $this->booking_fee;
+        } else {            
+            return $this->amount + $this->organiser_booking_fee + $this->booking_fee;
+        }
     }
 
     /**

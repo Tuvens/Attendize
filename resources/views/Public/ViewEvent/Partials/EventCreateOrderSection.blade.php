@@ -223,19 +223,19 @@
                 <h3>@lang("Public_ViewEvent.payment_information")</h3>
                     @lang("Public_ViewEvent.below_payment_information_header")
                 @if($event->enable_offline_payments || $event->enable_only_offline_payments)
-                    <div class="offline_payment_toggle">
+                    <div class="offline_payment_toggle" {!! $event->enable_only_offline_payments ? 'style="display: none"' : '' !!}>
                         <div class="custom-checkbox">
                             @if($payment_gateway === false)
                                 {{--  Force offline payment if no gateway  --}}
                                 <input type="hidden" name="pay_offline" value="1">
                                 <input id="pay_offline" type="checkbox" value="1" checked disabled>
                             @else
-                                <input data-toggle="toggle" id="pay_offline" name="pay_offline" type="checkbox" value="1">
+                                <input data-toggle="toggle" id="pay_offline" name="pay_offline" {{ $event->enable_only_offline_payments ? 'checked style="display: none"' : '' }} type="checkbox" value="1">
                             @endif
                             <label for="pay_offline">@lang("Public_ViewEvent.pay_using_offline_methods")</label>
                         </div>
                     </div>
-                    <div class="offline_payment" style="display: none;">
+                    <div class="offline_payment" style="{{ !$event->enable_only_offline_payments ? 'display: none' : '' }}">
                         <h5>@lang("Public_ViewEvent.offline_payment_instructions")</h5>
                         <div class="well">
                             {!! Markdown::parse($event->offline_payment_instructions) !!}

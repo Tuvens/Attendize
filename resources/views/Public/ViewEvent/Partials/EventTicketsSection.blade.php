@@ -111,6 +111,13 @@
                                     </td>
                                 </tr>
                                 @endif
+                                @if ($event->enable_offline_payments && !$event->enable_only_offline_payments)
+                                <tr>
+                                    <td colspan="3" style="text-align: center">
+                                        @lang("Public_ViewEvent.below_tickets_avoid_tax")
+                                    </td>
+                                </tr>
+                                @endif
                                 <tr>
                                     <td colspan="3" style="text-align: center">
                                         @lang("Public_ViewEvent.below_tickets")

@@ -171,7 +171,7 @@ class Ticket extends MyBaseModel
      * @return float|int
      */
     public function getTotalPriceAttribute()
-    {
+    {        
         return $this->getTotalBookingFeeAttribute() + $this->price;
     }
 
@@ -205,10 +205,15 @@ class Ticket extends MyBaseModel
      */
     public function getOrganiserBookingFeeAttribute()
     {
-        return (int)ceil($this->price) === 0 ? 0 : round(
-            ($this->price * ($this->event->organiser_fee_percentage / 100)) + ($this->event->organiser_fee_fixed),
-            2
-        );
+        // if only offline disable it
+        if ($this->event->enable_only_offline_payments) {
+            return $this->price;
+        } else {        
+            return (int)ceil($this->price) === 0 ? 0 : round(
+                ($this->price * ($this->event->organiser_fee_percentage / 100)) + ($this->event->organiser_fee_fixed),
+                2
+            );
+        }
     }
 
     /**
