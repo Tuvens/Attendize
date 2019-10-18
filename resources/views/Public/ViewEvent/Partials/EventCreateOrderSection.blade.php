@@ -238,7 +238,7 @@
                     <div class="offline_payment" style="{{ !$event->enable_only_offline_payments ? 'display: none' : '' }}">
                         <h5>@lang("Public_ViewEvent.offline_payment_instructions")</h5>
                         <div class="well">
-                            {!! Markdown::parse($event->offline_payment_instructions) !!}
+                            {!! str_replace('<a href', '<a target="_blank" href', Markdown::parse($event->offline_payment_instructions)) !!}
                         </div>
                     </div>
 
