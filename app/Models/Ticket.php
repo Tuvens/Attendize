@@ -207,7 +207,7 @@ class Ticket extends MyBaseModel
     {
         // if only offline disable it
         if ($this->event->enable_only_offline_payments) {
-            return $this->price;
+            return 0;
         } else {        
             return (int)ceil($this->price) === 0 ? 0 : round(
                 ($this->price * ($this->event->organiser_fee_percentage / 100)) + ($this->event->organiser_fee_fixed),
