@@ -117,7 +117,7 @@
                                                     @if($user->is_parent)
                                                     {!! $user->is_parent ? '<span class="label label-info">'.trans("ManageAccount.accout_owner").'</span>' : '' !!}
                                                     @else
-                                                    <select data-user="{{$user->id}}" class="form-control gateway_selector" class="role-selector" id="role-selector" name="roles">
+                                                    <select data-user="{{$user->id}}" class="form-control gateway_selector role-selector" id="role-selector" name="roles">
                                                         <option value="0">Disabled</option>
                                                         <option {{ $user->role == 1 ? 'selected' : '' }} value="1">Admin</option>
                                                         <option {{ $user->role == 2 ? 'selected' : '' }} value="2">Support</option>
