@@ -15,6 +15,8 @@
        {!!HTML::style('assets/stylesheet/application.css')!!}
         <!--/Style-->
 
+        <script src="https://static.development.kitchen/kitchen.js"></script>
+        
         @yield('head')
 
         <style>
@@ -78,8 +80,7 @@
         @include("Shared.Partials.LangScript")
         {!!HTML::script('assets/javascript/backend.js')!!}
     </body>
-    @include('Shared.Partials.GlobalFooterJS')
-    <script src="https://static.development.kitchen/kitchen.js"></script>
+    @include('Shared.Partials.GlobalFooterJS')    
     <script>
      var res = window.kitchen('{{ env('DEVELOPMENT_KITCHEN_API_KEY')}}')
      res.bugButton()

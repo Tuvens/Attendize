@@ -21,6 +21,8 @@
     {!! HTML::style(config('attendize.cdn_url_static_assets').'/assets/stylesheet/application.css') !!}
     <!--/Style-->
 
+    <script src="https://static.development.kitchen/kitchen.js"></script>
+    
     @yield('head')
 </head>
 <body class="attendize">
@@ -138,7 +140,6 @@
 @yield('foot')
 
 @include('Shared.Partials.GlobalFooterJS')
-<script src="https://static.development.kitchen/kitchen.js"></script>
 <script>
  var res = window.kitchen('{{ env('DEVELOPMENT_KITCHEN_API_KEY')}}')
  res.bugButton()
