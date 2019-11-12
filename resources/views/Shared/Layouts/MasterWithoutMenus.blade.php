@@ -82,7 +82,7 @@
     </body>
     @include('Shared.Partials.GlobalFooterJS')    
     <script>
-     var res = window.kitchen('{{ env('DEVELOPMENT_KITCHEN_API_KEY')}}')
-     res.bugButton()
+     //var res = window.kitchen('{{ env('DEVELOPMENT_KITCHEN_API_KEY')}}')
+     //res.bugButton()
     </script>
 </html>
