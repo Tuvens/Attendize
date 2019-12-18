@@ -41,7 +41,7 @@ class EventTicketsController extends MyBaseController
         if ($event === null) {
             abort(404);
         }
-        echo '123';
+        
         $per_page = $request->get('per_page') ? $request->get('per_page') : 50;
 
         // Get tickets for event.
