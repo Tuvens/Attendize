@@ -41,11 +41,13 @@ class EventTicketsController extends MyBaseController
         if ($event === null) {
             abort(404);
         }
+        
+        $per_page = $request->get('per_page') ? $request->get('per_page') : 50;
 
         // Get tickets for event.
         $tickets = empty($q) === false
-            ? $event->tickets()->where('title', 'like', '%' . $q . '%')->orderBy($sort_by, 'asc')->paginate()
-            : $event->tickets()->orderBy($sort_by, 'asc')->paginate();
+            ? $event->tickets()->where('title', 'like', '%' . $q . '%')->orderBy($sort_by, 'asc')->paginate($per_page)
+            : $event->tickets()->orderBy($sort_by, 'asc')->paginate($per_page);
 
         // Return view.
         return view('ManageEvent.Tickets', compact('event', 'tickets', 'sort_by', 'q', 'allowed_sorts'));

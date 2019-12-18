@@ -90,7 +90,7 @@
                             </label>
                             @foreach ($event->tickets as $ticket)
                                 <div class="custom-checkbox mb5">
-                                <input {{in_array($ticket->id, $question->tickets->pluck('id')->toArray()) ? 'checked' : ''}} id="ticket_{{ $ticket->id }}" data-toggle="toggle" name="tickets[]" type="checkbox" value="{{ $ticket->id }}">
+                                <input {{in_array($ticket->id, $question->tickets->pluck('id')->toArray()) ? 'checked' : ''}} id="ticket_{{ $ticket->id }}" data-toggle="toggle" name="tickets[]" type="checkbox" value="{{ $ticket->id }}" class="ticket_all">
                                 <label for="ticket_{{ $ticket->id }}">&nbsp; {{ $ticket->title }}</label>
                                     </div>
                             @endforeach

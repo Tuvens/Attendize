@@ -84,7 +84,7 @@
                     @foreach ($event->tickets as $ticket)
                         <div class="custom-checkbox mb5">
                             <input id="ticket_{{ $ticket->id }}" name="tickets[]" data-toggle='toggle' type="checkbox"
-                                   value="{{ $ticket->id }}">
+                                   value="{{ $ticket->id }}" class="ticket_all">
                             <label for="ticket_{{ $ticket->id }}">&nbsp; {{ $ticket->title }}</label>
                         </div>
                     @endforeach
