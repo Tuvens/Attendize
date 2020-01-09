@@ -54,9 +54,11 @@
 
                             <div class="form-group">
                                 {!! Form::label('password', trans("User.old_password"), array('class'=>'control-label')) !!}
+                                <input style="display:none">
+                                <input type="password" style="display:none">
                                 {!!  Form::password('password',
                                             array(
-                                            'class'=>'form-control'
+                                            'class'=>'form-control'                                            
                                             ))  !!}
                             </div>
                             <div class="form-group">
