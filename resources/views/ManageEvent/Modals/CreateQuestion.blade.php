@@ -26,6 +26,7 @@
                         'id' => 'question-title',
                         'class' => 'form-control',
                         'placeholder' => trans("Question.question_placeholder"),//'e.g. Please enter your full address?',
+                        'maxlength' => '450'
                     ]) !!}
                 </div>
                 <div class="form-group">

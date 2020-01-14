@@ -16,7 +16,7 @@ return array (
   'no_answers' => 'Sorry, there are no answers to this question yet.',
   'no_questions_yet' => 'No Questions Yet',
   'no_questions_yet_text' => 'Here you can add questions which attendees will be asked to answer during the check-out process.',
-  'question' => 'Question',
+  'question' => 'Question (450 chars max)',
   'question_options' => 'Question Options',
   'question_placeholder' => 'e.g. Please enter your full address?',
   'question_type' => 'Question Type',
