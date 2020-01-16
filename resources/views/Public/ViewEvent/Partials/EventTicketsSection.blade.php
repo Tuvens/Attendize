@@ -23,11 +23,12 @@
                                 $is_free_event = true;
                                 ?>
                                 @foreach($tickets->where('is_hidden', false) as $ticket)
+                                
                                     <tr class="ticket" property="offers" typeof="Offer">
                                         <td>
-                                <span class="ticket-title semibold" property="name">
-                                    {{$ticket->title}}
-                                </span>
+                                            <span class="ticket-title semibold" property="name">
+                                                {{$ticket->title}}
+                                            </span>
                                             <p class="ticket-descripton mb0 text-muted" property="description">
                                                 {{$ticket->description}}
                                             </p>
@@ -47,31 +48,43 @@
                                                           content="{{ $event->currency->code }}">
                                                     <meta property="price"
                                                           content="{{ number_format($ticket->price, 2, '.', '') }}">
+                                                    <?php $diff_count = $ticket->quantity_available - $ticket->quantity_sold; ?>
+                                                    @if ($diff_count < 6 && $diff_count >0)
+                                                    <div>
+                                                        Only <b>{{ $diff_count }}</b> tickets left
+                                                    </div>
+                                                    @endif
+                                                @endif
+                                                <?php $date_diff = isset($ticket->end_sale_date) ? date_diff(new DateTime(), new DateTime($ticket->end_sale_date))->days : (isset($ticket->event->end_date) ?  date_diff(new DateTime(), new DateTime($ticket->event->end_date))->days : 0);?>
+                                                @if ($date_diff > 0 && $date_diff < 6)
+                                                <div>
+                                                    Only <b>{{ $date_diff }}</b> days left
+                                                </div>
                                                 @endif
                                             </div>
                                         </td>
                                         <td style="width:85px;">
                                             @if($ticket->is_paused)
 
-                                                <span class="text-danger">
-                                    @lang("Public_ViewEvent.currently_not_on_sale")
-                                </span>
+                                        <span class="text-danger">
+                                            @lang("Public_ViewEvent.currently_not_on_sale")
+                                        </span>
 
                                             @else
 
                                                 @if($ticket->sale_status === config('attendize.ticket_status_sold_out'))
-                                                    <span class="text-danger" property="availability"
-                                                          content="http://schema.org/SoldOut">
-                                    @lang("Public_ViewEvent.sold_out")
-                                </span>
+                                            <span class="text-danger" property="availability"
+                                                                       content="http://schema.org/SoldOut">
+                                                 @lang("Public_ViewEvent.sold_out")
+                                             </span>
                                                 @elseif($ticket->sale_status === config('attendize.ticket_status_before_sale_date'))
                                                     <span class="text-danger">
-                                    @lang("Public_ViewEvent.sales_have_not_started")
-                                </span>
+                                                    @lang("Public_ViewEvent.sales_have_not_started")
+                                                </span>
                                                 @elseif($ticket->sale_status === config('attendize.ticket_status_after_sale_date'))
                                                     <span class="text-danger">
-                                    @lang("Public_ViewEvent.sales_have_ended")
-                                </span>
+                                                    @lang("Public_ViewEvent.sales_have_ended") 
+                                                </span>
                                                 @else
                                                     {!! Form::hidden('tickets[]', $ticket->id) !!}
                                                     <meta property="availability" content="http://schema.org/InStock">
