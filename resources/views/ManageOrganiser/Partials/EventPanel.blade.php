@@ -21,6 +21,7 @@
 
     </div>
 
+    @if (Auth::user()->role != 2)
     <div class="panel-body">
         <ul class="nav nav-section nav-justified mt5 mb5">
             <li>
@@ -38,6 +39,7 @@
             </li>
         </ul>
     </div>
+    @endif
     <div class="panel-footer">
         <ul class="nav nav-section nav-justified">
             <li>
