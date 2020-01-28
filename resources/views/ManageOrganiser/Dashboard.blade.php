@@ -51,6 +51,7 @@
 @stop
 
 @section('content')
+    @if (Auth::user()->role != 2)
     <div class="row">
         <div class="col-sm-6">
             <div class="stat-box">
@@ -73,7 +74,7 @@
             </div>
         </div>
     </div>
-
+    @endif
     <div class="row">
 
         <div class="col-md-8">
@@ -81,18 +82,19 @@
             <h4 style="margin-bottom: 25px;margin-top: 20px;">@lang("Organiser.event_calendar")</h4>
             <div id="calendar"></div>
 
-
-            <h4 style="margin-bottom: 25px;margin-top: 20px;">@lang("Public_ViewOrganiser.upcoming_events")</h4>
-            @if($upcoming_events->count())
-                @foreach($upcoming_events as $event)
-                    @include('ManageOrganiser.Partials.EventPanel')
-                @endforeach
-            @else
-                <div class="alert alert-success alert-lg">
-                    @lang("Organiser.no_upcoming_events") <a href="#"
-                                                     data-href="{{route('showCreateEvent', ['organiser_id' => $organiser->id])}}"
-                                                     class=" loadModal">@lang("Organiser.no_upcoming_events_click")</a>
-                </div>
+            @if (Auth::user()->role != 2)    
+                <h4 style="margin-bottom: 25px;margin-top: 20px;">@lang("Public_ViewOrganiser.upcoming_events")</h4>
+                @if($upcoming_events->count())
+                    @foreach($upcoming_events as $event)
+                        @include('ManageOrganiser.Partials.EventPanel')
+                    @endforeach
+                @else
+                    <div class="alert alert-success alert-lg">
+                        @lang("Organiser.no_upcoming_events") <a href="#"
+                                                         data-href="{{route('showCreateEvent', ['organiser_id' => $organiser->id])}}"
+                                                         class=" loadModal">@lang("Organiser.no_upcoming_events_click")</a>
+                    </div>
+                @endif
             @endif
         </div>
         <div class="col-md-4">

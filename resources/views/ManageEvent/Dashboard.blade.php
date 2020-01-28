@@ -40,6 +40,7 @@
 
 @section('content')
     <div class="row">
+        @if (Auth::user()->role != 2)
         <div class="col-sm-3">
             <div class="stat-box">
                 <h3>{{ money($event->sales_volume + $event->organiser_fees_volume, $event->currency) }}</h3>
@@ -58,6 +59,7 @@
                 <span>@lang("Dashboard.tickets_sold")</span>
             </div>
         </div>
+        @endif
         <div class="col-sm-3">
             <div class="stat-box">
                 <h3>{{ $event->stats->sum('views') }}</h3>
@@ -77,6 +79,7 @@
 
     <div class="row">
         <div class="col-md-9 col-sm-6">
+            @if (Auth::user()->role != 2)
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel">
@@ -116,6 +119,7 @@
                 </div>
 
             </div>
+            @endif
 
             <div class="row">
                 <div class="col-md-6">
