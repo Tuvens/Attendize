@@ -137,6 +137,7 @@ class EventCheckInController extends MyBaseController
         $qrcodeToken = $request->get('attendee_reference');
         $attendee = Attendee::scope()->withoutCancelled()
             ->join('tickets', 'tickets.id', '=', 'attendees.ticket_id')
+            ->join('orders', 'orders.id', '=', 'attendees.order_id')
             ->where(function ($query) use ($event, $qrcodeToken) {
                 $query->where('attendees.event_id', $event->id)
                     ->where('attendees.private_reference_number', $qrcodeToken);
@@ -150,6 +151,7 @@ class EventCheckInController extends MyBaseController
                 'attendees.arrival_time',
                 'attendees.has_arrived',
                 'tickets.title as ticket',
+                'orders.is_payment_received'
             ])->first();
 
         if (is_null($attendee)) {
@@ -178,7 +180,8 @@ class EventCheckInController extends MyBaseController
             'status'  => 'success',
             'name' => $attendee->first_name." ".$attendee->last_name,
             'reference' => $attendee->reference,
-            'ticket' => $attendee->ticket
+            'ticket' => $attendee->ticket,
+            'is_payment_received' => $attendee->is_payment_received
         ]);
     }
 }

@@ -145,7 +145,8 @@
                     <span class="message" v-if="scanResultObject.status == 'success'">
                         <span class="uppercase">@lang("Attendee.name")</span>: @{{ scanResultObject.name }}<br>
                         <span class="uppercase">@lang("Attendee.reference")</span>: @{{scanResultObject.reference }}<br>
-                        <span class="uppercase">@lang("Attendee.ticket")</span>: @{{scanResultObject.ticket }}
+                        <span class="uppercase">@lang("Attendee.ticket")</span>: @{{scanResultObject.ticket }} <br>
+                        <span v-if="!scanResultObject.is_payment_received" class="label label-danger">@lang("Order.awaiting_payment")</span>                        
                     </span>
                     <span v-if="isScanning">
                         <div id="scanning-ellipsis">@lang("Attendee.scanning")<span>.</span><span>.</span><span>.</span></div>
